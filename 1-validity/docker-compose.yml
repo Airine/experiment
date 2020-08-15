@@ -1,0 +1,14 @@
+version: "2.0"
+
+services:
+
+  iperfClient1:
+    image: alpine
+    command: ping 192.168.1.241
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: macvlanet
