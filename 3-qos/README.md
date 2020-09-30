@@ -4,3 +4,9 @@ Dynamic Adaptive Streaming over HTTP (DASH) provides adaptive streaming of video
 
 ## Getting Started
 
+### Set up DASH server
+
+
+
+### Run the contianers
+

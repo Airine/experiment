@@ -2,11 +2,21 @@ version: "2.0"
 
 services:
 
-  iperfClient1:
+  pingClient1:
+  # To verify the network setting
     image: alpine
-    command: ping 192.168.1.241
+    command: ping 192.168.1.1 -c 1
     networks:
-      - default
+      default:
+        ipv4_address: 192.168.1.200
+
+  pingClient2:
+  # To verify the network setting
+    image: alpine
+    command: ping google.com -c 1
+    networks:
+      default:
+        ipv4_address: 192.168.1.201
 
 networks:
   default:
