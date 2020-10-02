@@ -15,8 +15,8 @@ To emulate the user, we use docker with macvlan.
 ```bash
 docker network create -d macvlan \
     --subnet=192.168.1.0/24 \
-    --gateway=192.168.1.1 \
-    --aux-address="pi=192.168.1.241" \
+    --gateway=192.168.1.241 \
+    --aux-address="router=192.168.1.1" \
     -o parent=enp0s25 macvlanet
 ```
 
@@ -43,13 +43,8 @@ docker run --rm -it \
 ```
 
 ```
-apt install -y net-tools iproute2 iputils-ping iperf3 gnupg1 apt-transport-https dirmngr
-export INSTALL_KEY=379CE192D401AB61
-export DEB_DISTRO=$(lsb_release -sc)
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
-echo "deb https://ookla.bintray.com/debian ${DEB_DISTRO} main" | tee  /etc/apt/sources.list.d/speedtest.list
 apt update
-apt install -y speedtest
-
+apt install -y net-tools iproute2 iputils-ping iperf3 gnupg1 apt-transport-https dirmngr python3 python3-pip
+pip3 install speedtest-cli
 ```
 
