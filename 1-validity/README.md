@@ -44,3 +44,23 @@ docker run --rm -it \
 
 ### 2. Build the docker image
 
+```bash
+sudo docker build --tag myfi-tester:1.0 .
+```
+
+### 3. Test with `docker run`
+
+```bash
+sudo docker run --rm -it --network macvlanet \             
+    --name ubuntu-test \
+    --ip 192.168.1.200 \
+    -v /home/aaron/Documents/GitHub/wifi-lab/mifi-experiment/1-validity:/app \
+    --env LOGDIR=tester1 \
+    myfi-tester:1.0
+```
+
+### 4. Run the experiment
+
+```bash
+sudo docker-compose up
+```
