@@ -42,9 +42,5 @@ docker run --rm -it \
 	bash
 ```
 
-```
-apt update
-apt install -y net-tools iproute2 iputils-ping iperf3 gnupg1 apt-transport-https dirmngr python3 python3-pip
-pip3 install speedtest-cli
-```
+### 2. Build the docker image
 

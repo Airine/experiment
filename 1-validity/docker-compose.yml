@@ -2,18 +2,23 @@ version: "2.0"
 
 services:
 
-  pingClient1:
+  tester1:
   # To verify the network setting
-    image: alpine
-    command: ping 192.168.1.1 -c 1
+    image: myfi-tester:1.0
+    volumes:
+      - /home/aaron/Documents/GitHub/wifi-lab/mifi-experiment/1-validity:/app
+    environment:
+      LOGDIR: tester1
     networks:
       default:
         ipv4_address: 192.168.1.200
 
-  pingClient2:
-  # To verify the network setting
-    image: alpine
-    command: ping google.com -c 1
+  tester2:
+    image: myfi-tester:1.0
+    volumes:
+      - /home/aaron/Documents/GitHub/wifi-lab/mifi-experiment/1-validity:/app
+    environment:
+      LOGDIR: tester2
     networks:
       default:
         ipv4_address: 192.168.1.201
