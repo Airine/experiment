@@ -6,20 +6,18 @@ from selenium import webdriver
 from time import sleep
 
 logging.getLogger().setLevel(logging.INFO)
-# BASE_URL = 'http://10.10.10.22/dash/samples/dash-if-reference-player/t1.html'
-BASE_URL = 'http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html'
-BASE_URL = 'http://172.28.176.237/dash.js/samples/dash-if-reference-player/index.html'
 
-#BASE_URL = 'http://www.example.com/'
+BASE_URL = 'http://172.28.176.237/dash.js/samples/dash-if-reference-player/index.html'
 
 
 def chrome_example():
-    display = Display(visible=0, size=(800, 1600))
+    display = Display(visible=0, size=(800, 1310))
     display.start()
     logging.info('Initialized virtual display..')
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--autoplay-policy=no-user-gesture-required')
 
     chrome_options.add_experimental_option('prefs', {
         'download.default_directory': os.getcwd(),
@@ -38,7 +36,7 @@ def chrome_example():
     logging.info('Initialized chrome browser..')
 
     browser.get(BASE_URL)
-    sleep(5)
+    sleep(30)
     browser.save_screenshot('shd1.png')
     logging.info('Accessed %s ..', BASE_URL)
 
@@ -65,6 +63,8 @@ def firefox_example():
     logging.info('Initialized firefox browser..')
 
     browser.get(BASE_URL)
+    sleep(10)
+    browser.save_screenshot('shd1.png')
     logging.info('Accessed %s ..', BASE_URL)
 
     logging.info('Page title: %s', browser.title)
@@ -82,6 +82,8 @@ def phantomjs_example():
     logging.info('Initialized phantomjs browser..')
 
     browser.get(BASE_URL)
+    sleep(10)
+    browser.save_screenshot('shd1.png')
     logging.info('Accessed %s ..', BASE_URL)
 
     logging.info('Page title: %s', browser.title)
@@ -94,5 +96,5 @@ def phantomjs_example():
 
 if __name__ == '__main__':
     chrome_example()
-    #firefox_example()
-    #phantomjs_example()
+    # firefox_example()
+    # phantomjs_example()
