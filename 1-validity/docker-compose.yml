@@ -1,29 +1,15 @@
-version: "2.0"
-
-services:
-
-  tester1:
-  # To verify the network setting
-    image: myfi-tester:1.0
-    volumes:
-      - /home/aaron/Documents/GitHub/wifi-lab/mifi-experiment/1-validity:/app
-    environment:
-      LOGDIR: tester1
-    networks:
-      default:
-        ipv4_address: 192.168.1.200
-
-  tester2:
-    image: myfi-tester:1.0
-    volumes:
-      - /home/aaron/Documents/GitHub/wifi-lab/mifi-experiment/1-validity:/app
-    environment:
-      LOGDIR: tester2
-    networks:
-      default:
-        ipv4_address: 192.168.1.201
-
 networks:
   default:
     external:
       name: macvlanet
+services:
+  tester0:
+    environment:
+      LOGDIR: tester0
+    image: myfi-tester:1.0
+    networks:
+      default:
+        ipv4_address: 192.168.1.2
+    volumes:
+    - /home/trx/mifi-experiment/1-validity:/app
+version: '2.0'

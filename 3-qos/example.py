@@ -1,5 +1,7 @@
 import os
 import logging
+import json
+from urllib import request, parse
 
 from pyvirtualdisplay import Display
 from selenium import webdriver
@@ -36,7 +38,7 @@ def chrome_example():
     logging.info('Initialized chrome browser..')
 
     browser.get(BASE_URL)
-    sleep(30)
+    sleep(20)
     browser.save_screenshot('shd1.png')
     logging.info('Accessed %s ..', BASE_URL)
 
@@ -46,55 +48,15 @@ def chrome_example():
     display.stop()
 
 
-def firefox_example():
-    display = Display(visible=0, size=(800, 600))
-    display.start()
-    logging.info('Initialized virtual display..')
-
-    firefox_profile = webdriver.FirefoxProfile()
-    firefox_profile.set_preference('browser.download.folderList', 2)
-    firefox_profile.set_preference('browser.download.manager.showWhenStarting', False)
-    firefox_profile.set_preference('browser.download.dir', os.getcwd())
-    firefox_profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
-
-    logging.info('Prepared firefox profile..')
-
-    browser = webdriver.Firefox(firefox_profile=firefox_profile)
-    logging.info('Initialized firefox browser..')
-
-    browser.get(BASE_URL)
-    sleep(10)
-    browser.save_screenshot('shd1.png')
-    logging.info('Accessed %s ..', BASE_URL)
-
-    logging.info('Page title: %s', browser.title)
-
-    browser.quit()
-    display.stop()
-
-
-def phantomjs_example():
-    display = Display(visible=0, size=(800, 600))
-    display.start()
-    logging.info('Initialized virtual display..')
-
-    browser = webdriver.PhantomJS()
-    logging.info('Initialized phantomjs browser..')
-
-    browser.get(BASE_URL)
-    sleep(10)
-    browser.save_screenshot('shd1.png')
-    logging.info('Accessed %s ..', BASE_URL)
-
-    logging.info('Page title: %s', browser.title)
-
-    browser.quit()
-    display.stop()
-
-
+def request_bandwidth():
+    with open("setting.json", "r") as file:
+        data = json.load(file)
+        params = json.dumps(data).encode("utf8")
+        req = request.Request("http://192.168.1.241:5000/", data=params, headers={'content-type': 'application/json'})
+        res = request.urlopen(req)
+        print(res.read().decode('utf8'))
 
 
 if __name__ == '__main__':
+    request_bandwidth()
     chrome_example()
-    # firefox_example()
-    # phantomjs_example()

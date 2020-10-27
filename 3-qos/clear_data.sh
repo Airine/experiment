@@ -1,2 +1,2 @@
-#!/usr/bin/zsh
-sudo rm -rf containers/*
+#!/bin/bash
+sudo rm -rf containers
