@@ -59,4 +59,5 @@ def request_bandwidth():
 
 if __name__ == '__main__':
     request_bandwidth()
+    sleep(5)
     chrome_example()
