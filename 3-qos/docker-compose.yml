@@ -3,8 +3,8 @@ networks:
     external:
       name: macvlanet
 services:
-  dashClient0:
-    container_name: dash_client_0
+  client-0:
+    container_name: client_0
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -12,9 +12,9 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data0:/usr/src/app
-  dashClient1:
-    container_name: dash_client_1
+    - /home/trx/mifi-experiment/3-qos/clients/client-0:/usr/src/app
+  client-1:
+    container_name: client_1
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -22,9 +22,9 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data1:/usr/src/app
-  dashClient2:
-    container_name: dash_client_2
+    - /home/trx/mifi-experiment/3-qos/clients/client-1:/usr/src/app
+  client-2:
+    container_name: client_2
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -32,9 +32,9 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data2:/usr/src/app
-  dashClient3:
-    container_name: dash_client_3
+    - /home/trx/mifi-experiment/3-qos/clients/client-2:/usr/src/app
+  client-3:
+    container_name: client_3
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -42,9 +42,9 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data3:/usr/src/app
-  dashClient4:
-    container_name: dash_client_4
+    - /home/trx/mifi-experiment/3-qos/clients/client-3:/usr/src/app
+  client-4:
+    container_name: client_4
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -52,9 +52,9 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data4:/usr/src/app
-  dashClient5:
-    container_name: dash_client_5
+    - /home/trx/mifi-experiment/3-qos/clients/client-4:/usr/src/app
+  client-5:
+    container_name: client_5
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -62,9 +62,9 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data5:/usr/src/app
-  dashClient6:
-    container_name: dash_client_6
+    - /home/trx/mifi-experiment/3-qos/clients/client-5:/usr/src/app
+  client-6:
+    container_name: client_6
     image: aljoby/selenium_docker_new:dashClientImage
     networks:
       default:
@@ -72,35 +72,35 @@ services:
     ports:
     - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data6:/usr/src/app
-  dashClient7:
-    container_name: dash_client_7
-    image: aljoby/selenium_docker_new:dashClientImage
+    - /home/trx/mifi-experiment/3-qos/clients/client-6:/usr/src/app
+  client-7:
+    container_name: client_7
+    environment:
+      LOGDIR: client-7
+    image: myfi-tester:1.0
     networks:
       default:
         ipv4_address: 192.168.1.9
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data7:/usr/src/app
-  dashClient8:
-    container_name: dash_client_8
-    image: aljoby/selenium_docker_new:dashClientImage
+    - /home/trx/mifi-experiment/3-qos:/app
+  client-8:
+    container_name: client_8
+    environment:
+      LOGDIR: client-8
+    image: myfi-tester:1.0
     networks:
       default:
         ipv4_address: 192.168.1.10
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data8:/usr/src/app
-  dashClient9:
-    container_name: dash_client_9
-    image: aljoby/selenium_docker_new:dashClientImage
+    - /home/trx/mifi-experiment/3-qos:/app
+  client-9:
+    container_name: client_9
+    environment:
+      LOGDIR: client-9
+    image: myfi-tester:1.0
     networks:
       default:
         ipv4_address: 192.168.1.11
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/containers/container-data9:/usr/src/app
+    - /home/trx/mifi-experiment/3-qos:/app
 version: '2.0'

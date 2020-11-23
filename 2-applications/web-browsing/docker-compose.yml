@@ -1,0 +1,15 @@
+networks:
+  default:
+    external:
+      name: macvlanet
+services:
+  client-0:
+    container_name: client_0
+    image: mifi-browser:1.0
+    volumes:
+    - /home/trx/mifi-experiment/2-applications/web-browsing:/app
+    networks:
+      default:
+        ipv4_address: 192.168.1.2
+    
+version: '2.0'

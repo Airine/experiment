@@ -27,21 +27,45 @@ setting_file = args.setting
 def new_ip(i):
     return '192.168.1.'+str(i+2)
 
-def generate_dash_client(i):
+def generate_client(i):
+    """
+    i: the client id
+    both dash and web browsing clients share the same function
+    """
     return {
             "image": "aljoby/selenium_docker_new:dashClientImage",
-            "container_name": "dash_client_"+str(i),
+            "container_name": "client_"+str(i),
             "ports" :[
                 "4000:80"
             ],
             "volumes" :[
-                path+"/containers/"+"container-data"+str(i)+":/usr/src/app"
+                path+"/clients/"+"client-"+str(i)+":/usr/src/app"
             ],
             "networks": {
                 "default": {
                     "ipv4_address": new_ip(i)
                 }
             }
+    }
+
+def generate_download_client(i):
+    """
+    i: the client id
+    """
+    return {
+        "image": "myfi-tester:1.0",
+        "container_name": "client_"+str(i),
+        "environment": {
+            "LOGDIR": "client-"+str(i)
+        },
+        "volumes" :[
+            path+":/app"
+        ],
+        "networks": {
+            "default": {
+                "ipv4_address": new_ip(i)
+            }
+        }
     }
     
 
@@ -53,14 +77,19 @@ if __name__ == "__main__":
     assert len(settings) == N
 
     for i in range(N):
-        dc["services"]["dashClient"+str(i)] = generate_dash_client(i)
+        print(settings[i]["application"])
+        if settings[i]["application"] == "2":
+            dc["services"]["client-"+str(i)] = generate_download_client(i)
+        else:
+            dc["services"]["client-"+str(i)] = generate_client(i)
+        
     
     with open(path+"/"+"docker-compose.yml", 'w') as file:
         documents = yaml.dump(dc, file)
 
-    os.system("mkdir containers")
+    os.system("mkdir clients")
     for i in range(N):
-        directory = "containers/container-data"+str(i)
+        directory = "clients/client-"+str(i)
         os.system("mkdir "+directory)
         os.system("cp example.py "+directory+"/example.py")
         with open(directory+"/setting.json", "w") as file:

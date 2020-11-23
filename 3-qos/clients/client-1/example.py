@@ -1,19 +1,19 @@
 import os
 import logging
 import json
-from urllib import request
+from urllib import request, parse
 
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from time import sleep, time
+from time import sleep
 
 logging.getLogger().setLevel(logging.INFO)
 
 BASE_URL = 'http://172.28.176.237/dash.js/samples/dash-if-reference-player/index.html'
 
 
-def dash(t):
+def chrome_example():
     display = Display(visible=0, size=(800, 1310))
     display.start()
     logging.info('Initialized virtual display..')
@@ -42,7 +42,7 @@ def dash(t):
     logging.info('Initialized chrome browser..')
 
     browser.get(BASE_URL)
-    sleep(t)
+    sleep(20)
     browser.save_screenshot('shd1.png')
     logging.info('Accessed %s ..', BASE_URL)
 
@@ -99,22 +99,17 @@ def dash(t):
     browser.quit()
     display.stop()
 
-def request_bandwidth(data):
-    params = json.dumps(data).encode('utf8')
-    req = request.Request('http://192.168.1.241:5000/', data=params, headers={'content-type': 'application/json'})
-    res = request.urlopen(req)
-    logging.info(res.read().decode('utf8'))
+
+def request_bandwidth():
+    with open('setting.json', 'r') as file:
+        data = json.load(file)
+        params = json.dumps(data).encode('utf8')
+        req = request.Request('http://192.168.1.241:5000/', data=params, headers={'content-type': 'application/json'})
+        res = request.urlopen(req)
+        print(res.read().decode('utf8'))
 
 
 if __name__ == '__main__':
-    exp_time = 30
-    with open('setting.json', 'r') as file:
-        data = json.load(file)
-        request_bandwidth(data)
-
-        sleep(5) # sleep for 5 seconds to synchronize
-        
-        if data["application"] == "0": # dash
-            dash(30)
-        else:
-            web_browsing(30)
+    # request_bandwidth()
+    # sleep(5)
+    chrome_example()

@@ -24,7 +24,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "1"
+        "application": "0"
     },
     {
         "addr": "0x9E9581516679F57Aa7eb81D278841DF6aB93902B",
@@ -33,7 +33,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "1"
+        "application": "0"
     },
     {
         "addr": "0x59Ef5B8b24cE3e00Ad0345cD2d47f96947c3e2c3",
@@ -42,7 +42,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "1"
+        "application": "0"
     },
     {
         "addr": "0x71b3D7405080197fC03cA82bCDd1764F1e14ABf2",
@@ -51,7 +51,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "1"
+        "application": "0"
     },
     {
         "addr": "0x356Cf535FC1f1C4dD1a4C4f4c261684bcd3e1bcb",
@@ -60,7 +60,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "1"
+        "application": "0"
     },
     {
         "addr": "0x563A5fC36b990D68bBCaAA206C281BfEc31134AB",
@@ -69,7 +69,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "2"
+        "application": "0"
     },
     {
         "addr": "0xC9c4496508E92A9FCB0Ffc8Cb6363f910C7E8AE3",
@@ -78,7 +78,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "2"
+        "application": "0"
     },
     {
         "addr": "0xF7e5800E52318834E8689c37dCCCD2230427a905",
@@ -87,6 +87,6 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "2"
+        "application": "0"
     }
 ]
