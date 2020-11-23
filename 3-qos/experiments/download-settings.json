@@ -6,7 +6,7 @@
         "bid": "100",
         "deposit": "10000",
         "burst": "1",
-        "application": "0"
+        "application": "2"
     },
     {
         "addr": "0x6c319A49787d10a6e0c72a25DB06cc555370c4DD",
@@ -15,7 +15,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "0"
+        "application": "2"
     },
     {
         "addr": "0x9D3c8C3ff0f4a505a3eDA9127dc6039D991a80Fd",
@@ -24,7 +24,7 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "0"
+        "application": "2"
     },
     {
         "addr": "0x9E9581516679F57Aa7eb81D278841DF6aB93902B",
@@ -33,6 +33,6 @@
         "bid": "1",
         "deposit": "10000",
         "burst": "1",
-        "application": "0"
+        "application": "2"
     }
 ]

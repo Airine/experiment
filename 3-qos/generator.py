@@ -50,7 +50,7 @@ def generate_dash_client(i):
 
 def generate_browser_client(i):
     return {
-        "image": "myfi-browser:1.0",
+        "image": "mifi-browser:1.0",
         "container_name": "client_"+str(i),
         "volumes" :[
            path+"/clients/"+"client-"+str(i)+":/app"
@@ -70,7 +70,7 @@ def generate_download_client(i):
         "image": "mifi-downloader:1.0",
         "container_name": "client_"+str(i),
         "environment": {
-            "LOGDIR": "client-"+str(i)
+            "LOGDIR": "clients/client-"+str(i)
         },
         "volumes" :[
             path+":/app"
@@ -91,7 +91,6 @@ if __name__ == "__main__":
     assert len(settings) == N
 
     for i in range(N):
-        print(settings[i]["application"])
         client = None
         if settings[i]["application"] == "0":
             client = generate_dash_client(i)

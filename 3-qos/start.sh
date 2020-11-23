@@ -9,8 +9,8 @@ cat header.txt > $LOGDIR/bmon.log
 bmon -p eth0 -o format:fmt='$(attr:rxrate:bytes)\t\t$(attr:txrate:bytes)\n' >> $LOGDIR/bmon.log &
 
 curl -H "Acccept:application/json" -H "Content-type:application/json" -X POST -d @$LOGDIR/setting.json http://192.168.1.241:5000/
-  
+
 # Start the helper process
-speedtest-cli --bytes > $LOGDIR/speedtest.log
+speedtest-cli > $LOGDIR/speedtest.log
 
 exit

@@ -8,5 +8,15 @@ Dynamic Adaptive Streaming over HTTP (DASH) provides adaptive streaming of video
 
 
 
+### Generate clients
+
+Run the command below to generate the `docker-compose.yml` and the client folders.
+
+```bash
+python3 generator.py `pwd` 10 settings.json
+```
+
+If already exist or out of date, run `./clear_data.sh` to clean.
+
 ### Run the contianers
 

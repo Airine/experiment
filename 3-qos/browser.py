@@ -23,12 +23,14 @@ def web_browsing(t):
             total_resp_time = 0
             n_url = 0
             while time() - start_time < t:
+                if len(urls) < 1:
+                    break
                 url = str(urls.pop()).strip('\n')
                 resp_time = get_response_time(url)
                 f.write(str(n_url)+','+str(resp_time)+'\n')
                 total_resp_time += resp_time
                 n_url += 1
-                sleep(2)
+                # sleep(2)
             avg_resp_time = total_resp_time/n_url
             f.write('avg,'+str(avg_resp_time)+'\n')
 

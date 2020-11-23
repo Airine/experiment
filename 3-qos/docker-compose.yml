@@ -25,59 +25,49 @@ services:
     - /home/trx/mifi-experiment/3-qos/clients/client-1:/usr/src/app
   client-2:
     container_name: client_2
-    image: aljoby/selenium_docker_new:dashClientImage
+    image: mifi-browser:1.0
     networks:
       default:
         ipv4_address: 192.168.1.4
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/clients/client-2:/usr/src/app
+    - /home/trx/mifi-experiment/3-qos/clients/client-2:/app
   client-3:
     container_name: client_3
-    image: aljoby/selenium_docker_new:dashClientImage
+    image: mifi-browser:1.0
     networks:
       default:
         ipv4_address: 192.168.1.5
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/clients/client-3:/usr/src/app
+    - /home/trx/mifi-experiment/3-qos/clients/client-3:/app
   client-4:
     container_name: client_4
-    image: aljoby/selenium_docker_new:dashClientImage
+    image: mifi-browser:1.0
     networks:
       default:
         ipv4_address: 192.168.1.6
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/clients/client-4:/usr/src/app
+    - /home/trx/mifi-experiment/3-qos/clients/client-4:/app
   client-5:
     container_name: client_5
-    image: aljoby/selenium_docker_new:dashClientImage
+    image: mifi-browser:1.0
     networks:
       default:
         ipv4_address: 192.168.1.7
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/clients/client-5:/usr/src/app
+    - /home/trx/mifi-experiment/3-qos/clients/client-5:/app
   client-6:
     container_name: client_6
-    image: aljoby/selenium_docker_new:dashClientImage
+    image: mifi-browser:1.0
     networks:
       default:
         ipv4_address: 192.168.1.8
-    ports:
-    - 4000:80
     volumes:
-    - /home/trx/mifi-experiment/3-qos/clients/client-6:/usr/src/app
+    - /home/trx/mifi-experiment/3-qos/clients/client-6:/app
   client-7:
     container_name: client_7
     environment:
-      LOGDIR: client-7
-    image: myfi-tester:1.0
+      LOGDIR: clients/client-7
+    image: mifi-downloader:1.0
     networks:
       default:
         ipv4_address: 192.168.1.9
@@ -86,8 +76,8 @@ services:
   client-8:
     container_name: client_8
     environment:
-      LOGDIR: client-8
-    image: myfi-tester:1.0
+      LOGDIR: clients/client-8
+    image: mifi-downloader:1.0
     networks:
       default:
         ipv4_address: 192.168.1.10
@@ -96,8 +86,8 @@ services:
   client-9:
     container_name: client_9
     environment:
-      LOGDIR: client-9
-    image: myfi-tester:1.0
+      LOGDIR: clients/client-9
+    image: mifi-downloader:1.0
     networks:
       default:
         ipv4_address: 192.168.1.11
