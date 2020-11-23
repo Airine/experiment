@@ -27,7 +27,7 @@ setting_file = args.setting
 def new_ip(i):
     return '192.168.1.'+str(i+2)
 
-def generate_client(i):
+def generate_dash_client(i):
     """
     i: the client id
     both dash and web browsing clients share the same function
@@ -48,12 +48,26 @@ def generate_client(i):
             }
     }
 
+def generate_browser_client(i):
+    return {
+        "image": "myfi-browser:1.0",
+        "container_name": "client_"+str(i),
+        "volumes" :[
+           path+"/clients/"+"client-"+str(i)+":/app"
+        ],
+        "networks": {
+            "default": {
+                "ipv4_address": new_ip(i)
+            }
+        }
+    }
+
 def generate_download_client(i):
     """
     i: the client id
     """
     return {
-        "image": "myfi-tester:1.0",
+        "image": "mifi-downloader:1.0",
         "container_name": "client_"+str(i),
         "environment": {
             "LOGDIR": "client-"+str(i)
@@ -78,11 +92,14 @@ if __name__ == "__main__":
 
     for i in range(N):
         print(settings[i]["application"])
-        if settings[i]["application"] == "2":
-            dc["services"]["client-"+str(i)] = generate_download_client(i)
+        client = None
+        if settings[i]["application"] == "0":
+            client = generate_dash_client(i)
+        elif settings[i]["application"] == "1":
+            client = generate_browser_client(i)
         else:
-            dc["services"]["client-"+str(i)] = generate_client(i)
-        
+            client = generate_download_client(i)
+        dc["services"]["client-"+str(i)] = client
     
     with open(path+"/"+"docker-compose.yml", 'w') as file:
         documents = yaml.dump(dc, file)
@@ -91,6 +108,13 @@ if __name__ == "__main__":
     for i in range(N):
         directory = "clients/client-"+str(i)
         os.system("mkdir "+directory)
-        os.system("cp example.py "+directory+"/example.py")
+        
+        # copy files
+        if settings[i]["application"] == "0":
+            os.system("cp example.py "+directory+"/example.py")
+        elif settings[i]["application"] == "1":
+            os.system("cp browser.py "+directory+"/browser.py")
+            os.system("cp urls.txt "+directory+"/urls.txt")    
+        
         with open(directory+"/setting.json", "w") as file:
             json.dump(settings[i], file)
