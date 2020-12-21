@@ -95,6 +95,8 @@ def dash(t):
         f.write('\n'+str(avg_quality)+','+str(switches)+','+str(stalls)+','+str(init_delay)+'\n')
         qoe = 0.25 * avg_quality - 0.25 * switches - 0.25 * stalls - 0.25 * init_delay
         f.write('QoE:'+str(qoe))
+        n_qoe = 0.7 * avg_quality * chunks / 35 - - 0.1 * switches - 0.1 * stalls - 0.1 * init_delay
+        f.write('\nNew QoE:'+str(n_qoe))
 
     browser.quit()
     display.stop()
@@ -112,9 +114,6 @@ if __name__ == '__main__':
         data = json.load(file)
         request_bandwidth(data)
 
-        sleep(5) # sleep for 5 seconds to synchronize
+        sleep(10) # sleep for 10 seconds to synchronize
         
-        if data["application"] == "0": # dash
-            dash(30)
-        else:
-            web_browsing(30)
+        dash(30)

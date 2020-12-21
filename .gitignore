@@ -1,2 +1,4 @@
 1-validity/tester*
 3-qos/clients
+3-qos/experiment.csv
+3-qos/docker-compose.yml

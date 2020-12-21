@@ -17,7 +17,7 @@ docker network create -d macvlan \
     --subnet=192.168.1.0/24 \
     --gateway=192.168.1.241 \
     --aux-address="router=192.168.1.1" \
-    -o parent=enp0s25 macvlanet
+    -o parent=enp38s0 macvlanet
 ```
 
 Then, run `docker network ls`. If `maclanet` shows up, the network was created successfully.
@@ -45,7 +45,7 @@ docker run --rm -it \
 ### 2. Build the docker image
 
 ```bash
-sudo docker build --tag myfi-tester:1.0 .
+sudo docker build --tag mifi-downloader:1.0 .
 ```
 
 ### 3. Test with `docker run`
@@ -56,7 +56,7 @@ sudo docker run --rm -it --network macvlanet \
     --ip 192.168.1.200 \
     -v /home/aaron/Documents/GitHub/wifi-lab/mifi-experiment/1-validity:/app \
     --env LOGDIR=tester1 \
-    myfi-tester:1.0
+    mifi-downloader:1.0
 ```
 
 ### 4. Run the experiment

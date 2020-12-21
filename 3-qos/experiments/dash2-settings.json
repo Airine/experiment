@@ -3,7 +3,7 @@
         "addr": "0x4B54772Cc9e233B4fe1F04A65a994aF40A6834ac",
         "key": "0xa9329b37d3e0cd7ec6b97232d141ad39af0161c38ee8246e3238740d19d25987",
         "bandwidth": "2",
-        "bid": "100",
+        "bid": "1",
         "deposit": "10000",
         "burst": "1",
         "application": "0"

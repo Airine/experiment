@@ -26,7 +26,9 @@ def web_browsing(t):
                 if len(urls) < 1:
                     break
                 url = str(urls.pop()).strip('\n')
-                resp_time = get_response_time(url)
+                start_get = time()
+                get_response_time(url)
+                resp_time = time()-start_get
                 f.write(str(n_url)+','+str(resp_time)+'\n')
                 total_resp_time += resp_time
                 n_url += 1
