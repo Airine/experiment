@@ -50,6 +50,6 @@ if __name__ == '__main__':
         data = json.load(file)
         request_bandwidth(data)
 
-        sleep(5) # sleep for 5 seconds to synchronize
+        sleep(30) # sleep for 5 seconds to synchronize
         
         web_browsing(30)

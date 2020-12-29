@@ -53,7 +53,7 @@ def dash(t):
     start = None
     current_quality = 1
     switches = 0
-    chunks = 0
+    chunks = 1
     total_quality = 0
     stalls = 0
 
@@ -114,6 +114,6 @@ if __name__ == '__main__':
         data = json.load(file)
         request_bandwidth(data)
 
-        sleep(10) # sleep for 10 seconds to synchronize
+        sleep(30) # sleep for 10 seconds to synchronize
         
         dash(30)

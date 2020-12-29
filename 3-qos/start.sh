@@ -11,7 +11,7 @@ set -m
 curl -H "Acccept:application/json" -H "Content-type:application/json" -X POST -d @$LOGDIR/setting.json http://192.168.1.241:5000/
 
 echo "sleeping..."
-sleep 5
+sleep 30
 echo "speedtesting..."
 # Start the helper process
 speedtest-cli --single --no-pre-allocate > $LOGDIR/speedtest.log
