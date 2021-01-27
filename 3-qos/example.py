@@ -43,7 +43,7 @@ def dash(t):
 
     browser.get(BASE_URL)
     sleep(t)
-    browser.save_screenshot('shd1.png')
+    # browser.save_screenshot('shd1.png')
     logging.info('Accessed %s ..', BASE_URL)
 
     logging.info('Page title: %s', browser.title)
@@ -95,7 +95,7 @@ def dash(t):
         f.write('\n'+str(avg_quality)+','+str(switches)+','+str(stalls)+','+str(init_delay)+'\n')
         qoe = 0.25 * avg_quality - 0.25 * switches - 0.25 * stalls - 0.25 * init_delay
         f.write('QoE:'+str(qoe))
-        n_qoe = 0.7 * avg_quality * chunks / 35 - - 0.1 * switches - 0.1 * stalls - 0.1 * init_delay
+        n_qoe = 0.7 * avg_quality * chunks / 35 - 0.05 * switches - 0.1 * stalls - 0.15 * init_delay
         f.write('\nNew QoE:'+str(n_qoe))
 
     browser.quit()
